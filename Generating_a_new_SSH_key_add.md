@@ -1,33 +1,14 @@
 Generating a new SSH key and adding it to the ssh-agent
 =======================================================
 New features updated 
-
-In this article
-About SSH key generation
-Generating a new SSH key
-Adding your SSH key to the ssh-agent
-Generating a new SSH key for a hardware security key
-Further reading
-MacWindowsLinux
-About SSH key generation
-If you don't already have an SSH key, you must generate a new SSH key to use for authentication. If you're unsure whether you already have an SSH key, you can check for existing keys. For more information, see "Checking for existing SSH keys."
-If you want to use a hardware security key to authenticate to GitHub, you must generate a new SSH key for your hardware security key. You must connect your hardware security key to your computer when you authenticate with the key pair. For more information, see the OpenSSH 8.2 release notes.
-If you don't want to reenter your passphrase every time you use your SSH key, you can add your key to the SSH agent, which manages your SSH keys and remembers your passphrase.
-Generating a new SSH key
-1. Open Git Bash.
-2. Paste the text below, substituting in your GitHub email address.
-$ ssh-keygen -t ed25519 -C "your_email@example.com"
-Note: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-This creates a new SSH key, using the provided email as a label.
-> Generating public/private algorithm key pair.
-3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
-> Enter a file in which to save the key (/c/Users/you/.ssh/id_algorithm):[Press enter]
-4. At the prompt, type a secure passphrase. For more information, see "Working with SSH key passphrases."
-> Enter passphrase (empty for no passphrase): [Type a passphrase]
 > Enter same passphrase again: [Type passphrase again]
 Adding your SSH key to the ssh-agent
-Before adding a new SSH key to the ssh-agent to manage your keys, you should have checked for existing SSH keys and generated a new SSH key.
+Bsm,kjnjksd
+sm;lmsd;lmkgf
+fm;elf;le
+
+,;lsm;mg
+efore adding a new SSH key to the ssh-agent to manage your keys, you should have checked for existing SSH keys and generated a new SSH key.
 If you have GitHub Desktop installed, you can use it to clone repositories and not deal with SSH keys.
 1. Ensure the ssh-agent is running. You can use the "Auto-launching the ssh-agent" instructions in "Working with SSH key passphrases", or start it manually:
 # start the ssh-agent in the background
