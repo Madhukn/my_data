@@ -1,4 +1,5 @@
 Generating a new SSH key and adding it to the ssh-agent
+===============================================
 In this article
 About SSH key generation
 Generating a new SSH key
