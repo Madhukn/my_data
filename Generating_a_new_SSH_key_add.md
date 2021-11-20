@@ -1,13 +1,4 @@
 Generating a new SSH key and adding it to the ssh-agent
-=======================================================
-fixes
-hhhh
-hhhh
-hhj;l;
-jjjk'
-
- main
-
 About SSH key generation
 If you don't already have an SSH key, you must generate a new SSH key to use for authentication. If you're unsure whether you already have an SSH key, you can check for existing keys. For more information, see "Checking for existing SSH keys."
 If you want to use a hardware security key to authenticate to GitHub, you must generate a new SSH key for your hardware security key. You must connect your hardware security key to your computer when you authenticate with the key pair. For more information, see the OpenSSH 8.2 release notes.
