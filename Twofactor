@@ -40,5 +40,4 @@ $ git pull -v
 Linux/Debian (Clone as follows):
 
 git clone https://<tokenhere>@github.com/<user>/<repo>.git
-((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
-)))))))))))))))))))))))))))))))))))))))))))))))))))
+
