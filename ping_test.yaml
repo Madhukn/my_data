@@ -1,0 +1,7 @@
+-
+    name: run ping test
+    hosts: 
+    tasks: 
+      
+      - name: ping command
+        ping :
