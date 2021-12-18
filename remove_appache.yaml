@@ -1,0 +1,15 @@
+---
+-
+    hosts: testserver
+    become: True
+    tasks: 
+      - name: Start Apache server
+        service:
+          name: httpd
+          state: stopped
+          enabled: True
+      - name: remove package
+        yum:
+          name: "httpd" 
+          state: "absent" 
+...
