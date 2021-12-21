@@ -37,5 +37,4 @@
           dest: /etc/
           mode: '0755'
           cmd: /etc/mariadb_create.sh
-        
- ...
+...
