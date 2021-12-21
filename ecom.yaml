@@ -5,17 +5,17 @@
     tasks:
       - name: install firewalld
         yum:
-          name: firewalld
-          state: present
+          name: "firewalld"
+          state: "present"
         service:
-          name: firewalld
-          state: started
+          name: firewalld"
+          state: "started"
       - name: add firewalld in auto start
         command: systemctl enable firewalld
       - name: Deploy and configure Database
         yum:
-          name: mariadb-server
-          state: present
+          name: "mariadb-server"
+          state: "present"
         service:
            name: mariadb
            state: started
@@ -47,7 +47,7 @@
           name: git
           service: present
       -  name: 
-           ansible.builtin.git:
-             repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
-             dest: /var/www/html
-......
+         ansible.builtin.git:
+            repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
+            dest: /var/www/html
+...
