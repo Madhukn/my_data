@@ -47,7 +47,7 @@
         copy:
           src: db-load-script.sql
           dest: /var/tmp/
-          cmd: mysql < /var/tmp/db-load-script.sql
+        command: mysql < /var/tmp/db-load-script.sql
       - name: install httpd
         yum:
           name: httpd
