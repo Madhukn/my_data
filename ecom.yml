@@ -32,7 +32,7 @@
           - firewall-cmd --permanent --zone=public --add-port=3306/tcp
           - firewall-cmd --reload
       - name: Copy file with owner and permissions
-        ansible.builtin.copy:
+        copy:
           src: mariadb_create.sh
           dest: /var/tmp/
         command: /var/tmp/mariadb_create.sh
