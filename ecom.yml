@@ -35,5 +35,4 @@
         ansible.builtin.copy:
           src: mariadb_create.sh
           dest: /etc/
-        command: /etc/mariadb_create.sh
 ...
