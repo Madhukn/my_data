@@ -1,0 +1,40 @@
+---
+-
+    hosts: testserver
+    become: True
+    tasks:
+      - name: install firewalld
+        yum:
+          name: firewalld
+          state: present
+
+      - name: start service
+        service:
+            name: firewalld
+            state: started
+
+      - name: auto start
+        command: systemctl enable firewalld
+
+      - name: DB installation
+        yum:
+          name: mariadb-server
+          state: present
+      - name: start service
+        service:
+            name: mariadb
+            state: started
+      - name: add db auto start
+        command: systemctl enable mariadb
+      - name: configur the port
+        command: "{{item}}"
+        with_items:
+          - firewall-cmd --permanent --zone=public --add-port=3306/tcp
+          - firewall-cmd --reload
+      - name: configure DB
+        copy:
+          src: mariadb_create.sh
+          dest: /var/tmp
+        command: /var/tmp/mariadb_create.sh
+
+...
