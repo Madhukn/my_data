@@ -78,7 +78,7 @@
         git:
           repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
           dest: /var/www/html
-          clone: yes
+          clone: no
           update: yes
       - name: update index.php
         command: sed -i 's/3.108.220.30/localhost/g' /var/www/html/index.php
