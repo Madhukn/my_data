@@ -1,0 +1,52 @@
+---
+-
+    hosts: all
+    become: True
+    tasks:
+      - name: install firewalld
+        yum:
+          name: firewalld
+          state: present
+        service:
+          name: firewalld
+          state: started
+      - name: add firewalld in auto start
+        command: systemctl enable firewalld
+      - name: Deploy and configure Database
+        yum:
+          name: mariadb-server
+          state: present
+        service:
+           name: mariadb
+           state: started
+        command: systemctl enable mariadb
+      - name: configur the port
+        command: firewall-cmd --permanent --zone=public --add-port=3306/tcp :firewall-cmd --reload
+      - name: configure Database
+        copy:
+          src: mariadb_create.sh
+          dest: /var/tmp/
+        command: /var/tmp/mariadb_create.sh
+      - name: load Product inventory
+        copy: 
+          src: db-load-script.sql
+          dest: /var/tmp
+        command: mysql < /var/tmp/db-load-script.sql
+      - name: Deploy and configure Web
+        yum:
+          name: http php php-mysql
+          state: present
+        command: firewall-cmd --permanent --zone=public --add-port=80/tcp :firewall-cmd --reload
+      - name: configure httpd
+        command: sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
+      - name: start httpd
+        service: httpd
+        state: started
+      - name: download code
+        yum:
+          name: git
+          service: present
+      -  name: 
+           ansible.builtin.git:
+             repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
+             dest: /var/www/html
