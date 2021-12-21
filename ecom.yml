@@ -75,7 +75,7 @@
           name: git
           state: present
       - name: clone git repo
-        command: git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
+        cmd: git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
       - name: update index.php
         command: sed -i 's/3.108.220.30/localhost/g' /var/www/html/index.php
 ...
