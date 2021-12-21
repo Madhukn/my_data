@@ -34,6 +34,6 @@
       - name: Copy file with owner and permissions
         ansible.builtin.copy:
           src: mariadb_create.sh
-          dest: /var/tmp
+          dest: /var/tmp/
         command: /var/tmp/mariadb_create.sh
 ...
