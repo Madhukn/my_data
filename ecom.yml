@@ -35,4 +35,8 @@
         ansible.builtin.copy:
           src: mariadb_create.sh
           dest: /etc/
+        command: "{{item.run}}"
+        with_items:
+          - chmod 755 /etc/mariadb_create.sh
+          - /etc/mariadb_create.sh
 ...
