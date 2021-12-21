@@ -12,10 +12,8 @@
         service:
             name: firewalld
             state: started
-
       - name: auto start
         command: systemctl enable firewalld
-
       - name: DB installation
         yum:
           name: mariadb-server
@@ -31,10 +29,57 @@
         with_items:
           - firewall-cmd --permanent --zone=public --add-port=3306/tcp
           - firewall-cmd --reload
-      - name: Copy file with owner and permissions
-        ansible.builtin.copy:
-          src: mariadb_create.sh
-          dest: /etc/
-          mode: '0755'
-          cmd: /etc/mariadb_create.sh
-...
+      - name: install MySQL-python
+        yum:
+          name: MySQL-python
+          state: present
+      - name: Create a new DB
+        community.mysql.mysql_db:
+            name: ecomdb
+            state: present
+      - name: Create database user with name 'ecomuser' and password 'ecompassword' with all database privileges
+        community.mysql.mysql_user:
+            name: ecomuser
+            password: ecompassword
+            priv: '*.*:ALL'
+            state: present
+      - name: load product inventory
+        copy:
+          src: db-load-script.sql
+          dest: /var/tmp/
+          cmd: mysql < /var/tmp/db-load-script.sql
+      - name: install httpd
+        yum:
+          name: httpd
+          state: present
+      - name: configur the port
+        command: "{{item}}"
+        with_items:
+          - firewall-cmd --permanent --zone=public --add-port=80/tcp
+          - firewall-cmd --reload
+      - name: httpd service start
+        service:
+         name: httpd
+         state: started
+      - name: configure httpd
+        command: sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
+      - name: istall php
+        yum:
+         name: php
+         state: present
+      - name: install php-mysql
+        yum:
+          name: php-mysql
+          state: present
+      - name: git install
+        yum:
+          name: git
+          state: present
+      - name: clone git repo
+        git:
+          repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
+          dest: /var/www/html
+          clone: yes
+          update: yes
+      - name: update index.php
+        command: sed -i 's/3.108.220.30/localhost/g' /var/www/html/index.php
