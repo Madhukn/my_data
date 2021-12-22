@@ -82,7 +82,7 @@
           name: git
           state: present
       - name: clone git repo
-         git:
+        git:
           repo: https://github.com/kodekloudhub/learning-app-ecommerce.git
           dest:  /var/www/html/
           clone: yes
