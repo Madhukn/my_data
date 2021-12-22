@@ -87,6 +87,4 @@
           dest: /var/www/html/
           clone: yes
           update: yes
-      - name: update index.php
-        command: sudo sed -i 's/3.111.37.158/localhost/g' /var/www/html/index.php
 ...
