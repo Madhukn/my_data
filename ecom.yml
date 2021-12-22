@@ -48,9 +48,10 @@
           src: db-load-script.sql
           dest: /var/tmp/
           command: echo  "mysql < /var/tmp/db-load-script.sq " >> db_table.sh
-          mode: '0755'
-      - name: create data
-        command: /var/tmp/db_table.sh
+      - name: Copy  script to remote_machine
+        file: dest=/var/tmp/db_table.sh mode=0755
+      - name: Execute script on remote_machine
+        script: /tmp/db_table.sh    
       - name: install httpd
         yum:
           name: httpd
@@ -81,5 +82,5 @@
       - name: clone git repo
         command: git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
       - name: update index.php
-        command: sed -i 's/3.108.220.30/localhost/g' /var/www/html/index.php
+        command: sed -i 's/65.2.37.153/localhost/g' /var/www/html/index.php
 ...
