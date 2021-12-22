@@ -48,7 +48,7 @@
           src: db-load-script.sql
           dest: /var/tmp/
       - name: Copy  script to remote_machine
-        file: src=db_table.sh dest=/var/tmp/db_table.sh mode=0755
+        file: src=db_table.sh dest=/var/tmp/ mode=0755
       - name: Execute script on remote_machine
         script: /var/tmp/db_table.sh    
       - name: install httpd
